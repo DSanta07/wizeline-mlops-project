@@ -1,5 +1,9 @@
 # Project Datasets
 *.csv
+
+# Models
+*.pkl
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

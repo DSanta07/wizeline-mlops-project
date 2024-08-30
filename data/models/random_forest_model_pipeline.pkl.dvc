@@ -1,0 +1,5 @@
+outs:
+- md5: 61a19497b4d2fda6c5991c638cfeda85
+  size: 274474271
+  hash: md5
+  path: random_forest_model_pipeline.pkl

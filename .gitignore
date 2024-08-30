@@ -167,4 +167,4 @@ cython_debug/
 
 # Secrets:
 # - GDrive Client Secret
-secrets/
+secrets/*

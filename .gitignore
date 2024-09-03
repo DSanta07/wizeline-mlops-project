@@ -1,6 +1,9 @@
 # Models and Data
 data/*/*
 !data/*/*.dvc
+models/*/*
+!models/*/*.dvc
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

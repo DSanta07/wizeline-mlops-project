@@ -1,0 +1,57 @@
+services:
+  hotel_booking_model:
+    build: .
+    container_name: hotel_booking_model_container
+    ports:
+      - "8080:8080" # Port for Airflow webserver
+      - "8793:8793" # Port for Airflow scheduler (optional if needed for monitoring)
+    depends_on:
+      - postgres_db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=hotel_bookings
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - hotel_booking_network
+    command: >
+      bash -c "airflow db init && airflow webserver -p 8080 & airflow scheduler"
+
+  postgres_db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: hotel_bookings
+    ports:
+      - "2345:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    networks:
+      - hotel_booking_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres_db
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - hotel_booking_network
+
+networks:
+  hotel_booking_network:
+
+
+volumes:
+  postgres_data:
+  pgadmin_data:

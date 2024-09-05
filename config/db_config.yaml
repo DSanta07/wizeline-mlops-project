@@ -1,0 +1,6 @@
+database:
+  user: admin
+  password: admin
+  host: postgres_db_hotel
+  port: 2345
+  database: hotel_bookings

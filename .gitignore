@@ -3,6 +3,8 @@ data/*/*
 !data/*/*.dvc
 models/*/*
 !models/*/*.dvc
+*.csv
+*.pkl
 
 
 # Byte-compiled / optimized / DLL files

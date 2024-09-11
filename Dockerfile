@@ -1,21 +1,14 @@
-# Base image
-FROM python:3.12
 
+FROM apache/airflow:2.10.0
 
-# Set environment variables for Airflow
-ENV AIRFLOW_HOME=/usr/src/app/airflow
+USER root
 
-# Set working directory
-WORKDIR /usr/src/app
+RUN apt-get update && apt-get -y install libpq-dev gcc
 
-# Copy project files
-COPY . .
+USER airflow
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip
 
-# Expose ports for Airflow webserver (8080) and scheduler (8793, if needed)
-EXPOSE 8080 8793
+COPY requirements.txt /requirements.txt
 
-# Make sure the correct DB initialization happens before the webserver and scheduler are started
-CMD ["airflow", "scheduler"]
+RUN pip install --no-cache-dir -r /requirements.txt

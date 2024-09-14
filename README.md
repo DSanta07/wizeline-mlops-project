@@ -96,4 +96,4 @@ The Random Forest model was selected due to its superior performance with an acc
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For questions or feedback, please reach out to David Santander and Aldo at santander.david.19@gmail.com.
+For questions or feedback, please reach out to David Santander and Aldo Arellano at santander.david.19@gmail.com, aldo.arellano@wizeline.com.
